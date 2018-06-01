@@ -1,0 +1,22 @@
+.button,
+input[type="submit"]{
+  padding: 13px;
+  @include border-radius(2px);
+  font-size: 1.4rem;
+  color: $white;
+  cursor: pointer;
+  &.bold {
+    font-family: "montserratbold", sans-serif;
+  }
+}
+
+.button-red {
+  border: 1px solid #ef626c;
+  background-color: #ef626c;
+}
+
+.button-white {
+  border: 1px solid $white;
+  background-color: $white;
+  color: #6ccef5;
+}

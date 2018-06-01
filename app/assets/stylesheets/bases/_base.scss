@@ -1,0 +1,47 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: $white;
+  font: 1.4rem "montserratregular", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3 {
+  margin: 20px 0;
+}
+
+h4,
+h5,
+h6 {
+  margin: 10px 0;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  outline: 0;
+}
+
+strong {
+  font-family: "montserratbold", sans-serif;
+}
+
+.display-none {
+  display: none;
+}
+
+.turbolinks-progress-bar {
+  //background-color: $outer-space;
+}

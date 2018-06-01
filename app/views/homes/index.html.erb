@@ -1,0 +1,87 @@
+<div class="main">
+  <header>
+    <div class="wrapper flex jc-between ai-center">
+      <a href="/"><img src="/assets/jamal-up-logo-color.png"/></a>
+      <nav>
+        <ul>
+          <li><a href="#">Menu 1</a></li>
+          <li><a href="#">Menu 2</a></li>
+          <li><a href="#">Menu 3</a></li>
+          <li><a href="#">Menu 4</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <div class="wrapper info">
+    <h1>Gift Saves</h1>
+    <p>Give saves and get gifts</p>
+    <%= form_tag '/search' do %>
+      <div class="query">
+        <%= text_field_tag :query, nil,  placeholder: "Try 'Education' or 'Water'" %>
+        <%= submit_tag "Search projects", class: "button-red" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class="wrapper projects">
+  <h2>Recent projects</h2>
+  <div class="flex jc-between items">
+    <div class="item">
+      <img src="/assets/giftsaves-bambu-2-u" alt=""/>
+      <h3>Bambu2u</h3>
+      <p>Help save world shopping nature products</p>
+    </div>
+    <div class="item">
+      <img src="/assets/giftsaves-paper-for-water" alt=""/>
+      <h3>Paper for Water</h3>
+      <p>Give clear water to all parts of the world</p>
+    </div>
+    <div class="item">
+      <img src="/assets/giftsaves-bambu-2-u" alt=""/>
+      <h3>Bambu2u</h3>
+      <p>Help save world shopping nature products</p>
+    </div>
+    <div class="item">
+      <img src="/assets/giftsaves-paper-for-water" alt=""/>
+      <h3>Paper for Water</h3>
+      <p>Give clear water to all parts of the world</p>
+    </div>
+  </div>
+</div>
+<div class="wrapper">
+  <div class="flex jc-between ai-center call-to-action">
+    <a class="button button-red" href="#">Join Now and Take Advantage</a>
+  </div>
+</div>
+<footer>
+  <div class="wrapper">
+    <div class="flex links">
+      <div>
+        <p>Gift Saves</p>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Join Now</a></li>
+          <li><a href="#">Terms and Conditions</a></li>
+          <li><a href="#">Talk with us</a></li>
+        </ul>
+      </div>
+      <div>
+        <p>Explore</p>
+        <ul>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Gallery</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="flex ai-center footer-end">
+      <img src="/assets/logo"/>
+      © Gift Saves, Inc.
+      <ul>
+        <li>
+
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
