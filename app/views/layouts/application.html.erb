@@ -10,7 +10,11 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div id="wrapper">
+      <%= render partial: "layouts/header" %>
+      <%= yield %>
+      <%= render partial: "layouts/footer" %>
+    </div>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag params[:controller], 'data-turbolinks-track': 'reload' %>
   </body>
