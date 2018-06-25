@@ -11,47 +11,55 @@
     <div class="container">
         <div class="row">
             <div class="sidebar col-md-10 col-md-offset-1">
-                <div class="widget clearfix">
-                  <div class="widget-title">
-                      <h4><span>Sig-up Form</span></h4>
+              <div class="widget clearfix">
+                <div class="widget-title">
+                    <h4><span>Sig-up Form</span></h4>
+                </div>
+                <!-- end widget-title -->
+
+                <p>Don't have an Account? Register Now.</p>
+
+                <hr class="invis3">
+                <%= form_for @user, url: "/users/#{@next}", method: "post", html: { class: "contact-form newsletter" } do |f| %>
+                  <% if @user.errors.full_messages.any? %>
+                    <ul class="list-group">
+                      <% @user.errors.full_messages.each do |msg| %>
+                        <li class="list-group-item list-group-item-danger"><%= msg %></li>
+                      <% end %>
+                    </ul>
+                  <% end %>
+                  <% if flash[:notice] %>
+                    <ul class="list-group">
+                      <li class="list-group-item list-group-item-success"><%= flash[:notice] %></li>
+                    </ul>
+                  <% end %>
+                  <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                      <%= f.label :first_name, class: "control-label" %>
+                      <%= f.text_field :first_name, class: "form-control", placeholder: "Janny" %>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                      <%= f.label :last_name, class: "control-label" %>
+                      <%= f.text_field :last_name, class: "form-control", placeholder: "Pelt" %>
+                    </div>
+                    <div class="col-md-12 col-sm-12">
+                      <%= f.label :email, class: "control-label" %>
+                      <%= f.email_field :email, class: "form-control", placeholder: "jannypelt@gmail.com" %>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                      <%= f.label :password, class: "control-label" %>
+                      <%= f.password_field :password, class: "form-control", placeholder: "********" %>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                      <%= f.label :password_confirmation, class: "control-label" %>
+                      <%= f.password_field :password_confirmation, class: "form-control", placeholder: "********" %>
+                    </div>
+                    <div class="col-md-12 col-sm-12">
+                      <%= f.submit "Register", class: "btn btn-primary pull-right" %>
+                    </div>
                   </div>
-                  <!-- end widget-title -->
-
-                  <p>Don't have an Account? Register Now.</p>
-
-                  <hr class="invis3">
-                    <form id="submit" class="contact-form newsletter">
-                      <div class="row">
-                          <div class="col-md-6 col-sm-12">
-                              <label class="control-label">First Name</label>
-                              <input type="text" class="form-control" placeholder="Jenny">
-                          </div>
-                          <div class="col-md-6 col-sm-12">
-                              <label class="control-label">Last Name</label>
-                              <input type="text" class="form-control" placeholder="Pelt">
-                          </div>
-
-                          <div class="col-md-12 col-sm-12">
-                              <label class="control-label">Email</label>
-                              <input type="email" class="form-control" placeholder="jennypelt@gmail.com">
-                          </div>
-
-                          <div class="col-md-6 col-sm-12">
-                              <label class="control-label">Password</label>
-                              <input type="password" class="form-control" placeholder="********">
-                          </div>
-
-                          <div class="col-md-6 col-sm-12">
-                              <label class="control-label">Re-enter password</label>
-                              <input type="password" class="form-control" placeholder="********">
-                          </div>
-
-                          <div class="col-md-12 col-sm-12">
-                              <input class="btn btn-primary pull-right" type="submit" value="Register">
-                          </div>
-                      </div>
-                    </form>
-                </div><!-- end post-wrapper -->
+                <% end %>
+              </div><!-- end post-wrapper -->
             </div><!-- end content -->
         </div><!-- end row -->
     </div><!-- end container -->

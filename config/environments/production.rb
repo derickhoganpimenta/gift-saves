@@ -16,7 +16,7 @@ Rails.application.configure do
 
   # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
   # or in config/master.key. This key is used to decrypt credentials (and other encrypted files).
-  # config.require_master_key = true
+  config.require_master_key = true
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
@@ -91,4 +91,21 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.action_mailer.default_url_options = { :host => "giftsaves.com" }
+  routes.default_url_options[:host] = "giftsaves.com"
+
+  PAPERCLIP_STORAGE_OPTIONS = {
+    url: "pfw-bucket.s3-website.us-east-2.amazonaws.com",
+    path: "/:class/:attachment/:id/:style/:filename",
+    :s3_region => "us-east-2",
+    :storage => :s3,
+    s3_host_name: "s3.us-east-2.amazonaws.com",
+    :s3_protocol => :https,
+    :s3_credentials => {
+      bucket: "pfw-bucket",
+      access_key_id: "AKIAJNNGC44KFADB26NQ",
+      secret_access_key: "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"
+    }
+  }
 end

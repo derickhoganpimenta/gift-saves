@@ -56,7 +56,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: gift_saves_test
+  database: gift_saves_development
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -78,9 +78,9 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 
-#development:
-#  <<: *default
-#  database: d8mt7g4c0c9kcm
-#  host: ec2-54-197-233-123.compute-1.amazonaws.com
-#  username: vmrcpyyurbbmfd
-#  password: 638df01fe676350f8aa96dce8199fad57ea4e367af4116aa3b2ba79c851328b5
+production:
+  <<: *default
+  database: <%= Rails.application.credentials.database[:username] %>
+  host: <%= Rails.application.credentials.database[:host] %>
+  username: <%= Rails.application.credentials.database[:username] %>
+  password: <%= Rails.application.credentials.database[:password] %>

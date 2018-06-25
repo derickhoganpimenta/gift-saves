@@ -58,4 +58,23 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  Paperclip.options[:command_path] = "/usr/local/bin/"
+
+  config.action_mailer.default_url_options = { :host => "localhost:3000" }
+  routes.default_url_options[:host] = "localhost:3000"
+
+  PAPERCLIP_STORAGE_OPTIONS = {
+    url: "pfw-bucket.s3-website.us-east-2.amazonaws.com",
+    path: "/:class/:attachment/:id/:style/:filename",
+    :s3_region => "us-east-2",
+    :storage => :s3,
+    s3_host_name: "s3.us-east-2.amazonaws.com",
+    :s3_protocol => :https,
+    :s3_credentials => {
+      bucket: "pfw-bucket",
+      access_key_id: "AKIAJNNGC44KFADB26NQ",
+      secret_access_key: "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"
+    }
+  }
 end
