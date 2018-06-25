@@ -76,7 +76,7 @@ class SessionsController < ApplicationController
             substitutions
           )
           flash[:error] = "Unconfirmed account. Forwarded verification email"
-          format.html { redirect_to "/users/new" }
+          format.html { redirect_to "/sessions/new" }
         end
       else
         flash[:error] = "Invalid email/password combination."
