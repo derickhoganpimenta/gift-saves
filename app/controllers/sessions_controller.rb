@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
         if extra_params["next"].present?
           format.html { redirect_to extra_params["next"]}
         else
-          format.html { redirect_to "/products"}
+          format.html { redirect_to dashboard_path}
         end
       else
         @user = User.new(facebook_login)
@@ -39,7 +39,7 @@ class SessionsController < ApplicationController
         if extra_params["next"].present?
           format.html { redirect_to extra_params["next"]}
         else
-          format.html { redirect_to "/products" }
+          format.html { redirect_to dashboard_path }
         end
       end
     end
