@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/gs_dash', as: 'rails_admin'
   root "homes#index"
 
   scope "/sessions" do
@@ -17,6 +18,8 @@ Rails.application.routes.draw do
   end
 
   scope "/dashboards" do
-    get "/", to: "dashboards#index", as: :dashboard
+    get "/donors", to: "dashboards#donors", as: :donors_dashboard
+    get "/non-profits", to: "dashboards#non_profits", as: :non_profits_dashboard
+    get "/business", to: "dashboards#business", as: :business_dashboard
   end
 end

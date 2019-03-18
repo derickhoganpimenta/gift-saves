@@ -1,5 +1,11 @@
 class User < ApplicationRecord
 
+  has_many :addresses, as: :addressable
+  has_many :subscriptions
+  has_many :business_users
+  has_many :businesses, through: :business_users
+  has_many :orders
+
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }

@@ -74,3 +74,6 @@ gem "paperclip", "~> 5.0.0.beta1"
 gem "enum_help"
 
 gem "aws-sdk", ">= 2.0.34"
+
+#admin
+gem 'rails_admin', '~> 1.3'
