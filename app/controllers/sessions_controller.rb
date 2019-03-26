@@ -56,7 +56,7 @@ class SessionsController < ApplicationController
           if params[:next].present?
             format.html { redirect_to params[:next] }
           else
-            format.html { redirect_to dashboard_path}
+            format.html { redirect_to donors_dashboard_path}
           end
         else
           if params[:next].present?

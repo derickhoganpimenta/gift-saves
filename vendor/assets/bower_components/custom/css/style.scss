@@ -2790,3 +2790,7 @@ input.styled[type="radio"]:checked + label::after {
     font-weight: bold;
   }
 }
+
+.profile-img {
+  width: 200px;
+}

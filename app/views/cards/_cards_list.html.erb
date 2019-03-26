@@ -1,0 +1,20 @@
+<% if @cards.count > 0 %>
+  <% @cards.each do |card| %>
+  <div class="coupon-meta">
+    <h3><%= card.brand %></h3>
+    <p>
+      <%= Card.card_format(card) %> |
+      <%= link_to cards_delete_path(card.id), method: :delete, data: {confirm: 'Delete card?', commit: 'Delete'}, :remote => true do %>
+        <i class="glyphicon glyphicon-remove"></i>
+      <% end %>
+    </p>
+  </div>
+  <% end %>
+<% else %>
+  <div class="panel panel-info">
+    <div class="panel-heading">Information</div>
+    <div class="panel-body">
+      No cards to show
+    </div>
+  </div>
+<% end %>

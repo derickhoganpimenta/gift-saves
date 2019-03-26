@@ -22,7 +22,7 @@ class UsersController < ApplicationController
           "b3c37b0c-cf67-4288-a5f9-60af602013ae",
           substitutions
         )
-=end        
+=end
         flash[:notice] = "User successfully saved."
         format.html { redirect_to login_path }
       else
@@ -35,9 +35,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def update_avatar
+    @user = current_logged_user
+    @user.update_attribute("avatar", avatar_params[:avatar])    
+  end
+
   private
 
   def users_params
     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+  end
+
+  def avatar_params
+    params.require(:user).permit(:avatar)
   end
 end

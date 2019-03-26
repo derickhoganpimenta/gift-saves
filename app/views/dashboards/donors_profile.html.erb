@@ -1,0 +1,89 @@
+<div class="parallax first-section" data-stellar-background-ratio="0.5" style="background-image:url('/assets/gift-saves-main-background');">
+  <div class="container">
+    <div class="section-title m30 text-center">
+      <h1>User Dashboard</h1>
+      <p>In dignissim feugiat gravida. Proin feugiat quam sed gravida fringilla. Proin quis mauris ut magna fringilla vulputate quis non ante. Integer bibendum velit dui. Sed consequat nisi id convallis eleifend. </p>
+    </div><!-- end title -->
+  </div><!-- end container -->
+</div><!-- end section -->
+<div class="section wb">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <% if flash[:notice] %>
+          <ul class="list-group">
+            <li class="list-group-item list-group-item-success"><%= flash[:notice] %></li>
+          </ul>
+        <% end %>
+      </div>
+      <%= render partial: "donors_dashboards/sidebar_menu" %>
+      <div class="sidebar col-md-8">
+          <div class="widget clearfix">
+
+              <form id="submit" class="contact-form newsletter">
+                  <div class="row">
+                      <div class="col-md-12 col-sm-12">
+                          <label class="control-label">Your Photo <small>Please add a photo. (200x200)</small></label>
+                          <div class="fileupload fileupload-new" data-provides="fileupload">
+                              <div class="fileupload-preview thumbnail"><img src="/assets/avatar_03.png" alt=""></div>
+                              <br>
+                              <span class="btn btn-default btn-file">
+                              <span class="fileupload-new">Select Avatar</span>
+                              <span class="fileupload-exists">Change</span>
+                              <input type="file">
+                              </span>
+                              <a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload"><i class="fa fa-close"></i></a>
+                          </div>
+                      </div>                      
+                  </div>
+              </form>
+                  <!-- end row -->
+
+                  <hr class="invis3">
+              <%= form_for @address, url: "/users/my-addresses/#{@address.id}", html: { class: "contact-form newsletter" } do |f| %>
+
+                  <div class="row">
+                      <div class="col-md-6 col-sm-12">
+                          <label class="control-label">City <small>Please select</small></label>
+                          <select class="form-control">
+                            <% @cities.each do |city| %>
+                              <<option value="<%= city.id %>"><%= city.name %></option>
+                            <% end %>
+                          </select>
+                      </div>
+
+                      <div class="col-md-6 col-sm-12">
+                        <label class="control-label">Zipcode <small>Little text</small></label>
+                        <input type="text" class="form-control" value="<%= @address.zip_code %>">
+                      </div>
+
+                      <div class="col-md-6 col-sm-12">
+                        <label class="control-label">Neighborhood <small>Little text</small></label>
+                        <input type="text" class="form-control" value="<%= @address.neighborhood %>">
+                      </div>
+
+                      <div class="col-md-6 col-sm-12">
+                        <label class="control-label">Street Address <small>Little text</small></label>
+                        <input type="text" class="form-control" value="<%= @address.street_address %>">
+                      </div>
+
+                      <div class="col-md-6 col-sm-12">
+                        <label class="control-label">Number <small>Little text</small></label>
+                        <input type="text" class="form-control" value="<%= @address.number %>">
+                      </div>
+
+                      <div class="col-md-6 col-sm-12">
+                        <label class="control-label">Complement <small>Little text</small></label>
+                        <input type="text" class="form-control" value="<%= @address.complement %>">
+                      </div>
+
+                      <div class="col-md-12 col-sm-12">
+                          <button class="btn btn-primary">Update Address</button>
+                      </div>
+                  </div>
+              <% end %>
+          </div>
+      </div><!-- end content -->
+    </div><!-- end row -->
+  </div>
+</div>

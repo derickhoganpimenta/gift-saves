@@ -1,0 +1,2 @@
+class NonProfitsDashboardsController < ApplicationController
+end

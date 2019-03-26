@@ -1,0 +1,31 @@
+
+<label class="control-label">Your Photo <small>Please add a photo. (200x200)</small></label>
+<% if @user.avatar? %>
+<div>
+    <%= image_tag @user.avatar.url, class: "img-thumbnail profile-img" %>
+</div>
+<% end %>
+
+<%= form_for @user, url: avatar_update_path, method: "post", html: { class: "contact-form newsletter", remote: true } do |f| %>
+  <% if @user.errors.full_messages.any? %>
+    <ul class="list-group">
+      <% @user.errors.full_messages.each do |msg| %>
+        <li class="list-group-item list-group-item-danger"><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <% if flash[:notice] %>
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-success"><%= flash[:notice] %></li>
+    </ul>
+  <% end %>
+  <div class="row">
+    <div class="col-md-6 col-sm-12">
+      <%= f.file_field :avatar, class: "form-control" %>
+    </div>
+
+    <div class="col-md-12 col-sm-12">
+      <%= f.submit "Update Avatar", class: "btn btn-primary pull-right" %>
+    </div>
+  </div>
+<% end %>

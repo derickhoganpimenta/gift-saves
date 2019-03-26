@@ -103,7 +103,7 @@ Rails.application.configure do
     s3_host_name: "s3.us-east-2.amazonaws.com",
     :s3_protocol => :https,
     :s3_credentials => {
-      bucket: "pfw-bucket",
+      bucket: "giftsaves",
       access_key_id: "AKIAJNNGC44KFADB26NQ",
       secret_access_key: "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"
     }

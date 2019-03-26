@@ -1,0 +1,28 @@
+<div class="parallax first-section" data-stellar-background-ratio="0.5" style="background-image:url('/assets/gift-saves-main-background');">
+  <div class="container">
+    <div class="section-title text-center">
+      <h1>User Dashboard</h1>
+    </div><!-- end title -->
+  </div><!-- end container -->
+</div><!-- end section -->
+<div class="section wb">
+  <div class="container">
+    <div class="row">
+      <%= render partial: "donors_dashboards/sidebar_menu" %>
+      <div class="sidebar col-md-8">
+          <div class="widget clearfix">
+              <div class="row">
+                <% @wishlists.each do |wishlist| %>
+                  <div class="col-md-4 col-sm-4 col-xs-12">
+                      <div class="post-media text-center">
+                          <%= link_to image_tag("/assets/store_01.jpg", alt: wishlist.non_profit.name, class: "img-responsive"), wishlist.non_profit.url %>                          
+                          <small><%= link_to wishlist.non_profit.name, wishlist.non_profit.url %></small>
+                      </div><!-- end media -->
+                  </div><!-- end col -->
+                <% end %>
+              </div><!-- end row -->
+          </div><!-- end post-wrapper -->
+      </div><!-- end content -->
+    </div><!-- end row -->
+  </div>
+</div>

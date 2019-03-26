@@ -1,0 +1,23 @@
+<% if @addresses.count > 0 %>
+  <% @addresses.each do |address| %>
+  <div class="coupon-meta">
+    <h3><%= address.type_cd.humanize %></h3>
+    <p>
+      <%= address.complete_address %> |
+      <%= link_to addresses_edit_path(address.id), class: "edit" do %>
+        <i class="glyphicon glyphicon-pencil"></i>
+      <% end %> |
+      <%= link_to "/dashboards/addresses/#{address.id}", method: :delete, data: {confirm: 'Delete address?', commit: 'Delete'}, :remote => true do %>
+        <i class="glyphicon glyphicon-remove"></i>
+      <% end %>
+    </p>
+  </div>
+  <% end %>
+<% else %>
+  <div class="panel panel-info">
+    <div class="panel-heading">Information</div>
+    <div class="panel-body">
+      There are no addresses to show
+    </div>
+  </div>
+<% end %>
