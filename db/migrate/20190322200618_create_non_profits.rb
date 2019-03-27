@@ -3,6 +3,8 @@ class CreateNonProfits < ActiveRecord::Migration[5.2]
     create_table :non_profits do |t|
       t.string :name
       t.string :url
+      t.text :short_description
+      t.text :full_description            
       t.attachment :badge
       t.references :owner, index: true
       t.timestamps

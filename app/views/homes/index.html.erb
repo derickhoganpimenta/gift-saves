@@ -9,25 +9,17 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <%= form_for(:search, url: "/sessions/#{@next}", html: { class: "well", method: "get" }) do |f| %>
+                    
+                    <%= form_for(:search, url: non_profit_search_path, html: { class: "well", method: "get" }) do |f| %>
                       <div class="row">
-                          <div class="col-md-3 col-sm-6">
-                              <select class="form-control">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                              </select>
+                          <div class="col-md-4 col-sm-4">
+                              <%= f.select :category, @categories.map { |key, value| [key.name, key.id] }, {include_blank: true}, {required: false, class: "form-control"} %>                              
                           </div>
-                          <div class="col-md-3 col-sm-6">
-                              <input type="email" class="form-control" placeholder="Non-profit name">
-                          </div>
-                          <div class="col-md-3 col-sm-6">
-                              <input type="text" class="form-control input-group-lg" placeholder="Ex.: 10.00...">
-                          </div>
-                          <div class="col-md-3 col-sm-6">
-                              <button type="submit" class="btn btn-primary btn-xs"><i class="fa fa-search fa-2x" aria-hidden="true"></i></button>
+                          <div class="col-md-4 col-sm-4">                              
+                              <%= f.text_field :name, class: "form-control", placeholder: "Non-profit name" %>
+                          </div>                          
+                          <div class="col-md-4 col-sm-4">
+                              <button type="submit" class="btn-primary btn-block"><i class="fa fa-search fa-2x" aria-hidden="true"></i></button>
                           </div>
                       </div>
                     <% end %>
@@ -47,11 +39,13 @@
     <div class="section wb">
         <div class="container">
             <div class="row">
+              <% @non_profits.each do |non_profit| %>
                 <div class="col-md-3 col-sm-4 col-xs-12">
                     <div class="promobox">
                         <div class="post-media">
-                            <a href="categories.html"><img src="/assets/gift-saves-example-1" alt="" class="img-responsive"></a>
+                            <%= link_to image_tag(non_profit.badge.url, alt: non_profit.name, class: "img-responsive"), non_profit_path(non_profit.slug) %>
                             <div class="promo-desc">
+                              <!--
                               <div class="rating pull-left">
                                   <i class="fa fa-star"></i>
                                   <i class="fa fa-star"></i>
@@ -59,78 +53,15 @@
                                   <i class="fa fa-star"></i>
                                   <i class="fa fa-star"></i>
                                   <small>&nbsp;21 Rating</small>
-                              </div><br>
-                              <h4 class="text-center"><a href="#">20% OFF</a></h4>
-                              <small>Six flags general admission ticket</small>
+                              </div><br>-->
+                              <h4 class="text-center"><%= link_to non_profit.name, non_profit_path(non_profit.slug) %></h4>
+                              <small class="text-center"><%= non_profit.short_description %></small>
                             </div><!-- end desc -->
                         </div><!-- end media -->
 
                     </div><!-- end box -->
                 </div><!-- end col -->
-
-                <div class="col-md-3 col-sm-4 col-xs-12">
-                    <div class="promobox">
-                        <div class="post-media">
-                            <a href="categories.html"><img src="/assets/gift-saves-example-2" alt="" class="img-responsive"></a>
-
-                            <div class="promo-desc">
-                              <div class="rating pull-left">
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star"></i>
-                                  <small>&nbsp;21 Rating</small>
-                              </div><br>
-                              <h4 class="text-center"><a href="#">20% OFF</a></h4>
-                              <small>Six flags general admission ticket</small>
-                            </div><!-- end desc -->
-                        </div><!-- end media -->
-
-                    </div><!-- end box -->
-                </div><!-- end col -->
-
-                <div class="col-md-3 col-sm-4 col-xs-12">
-                    <div class="promobox">
-                        <div class="post-media">
-                            <a href="categories.html"><img src="/assets/gift-saves-example-3" alt="" class="img-responsive"></a>
-
-                            <div class="promo-desc">
-                              <div class="rating pull-left">
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star"></i>
-                                  <small>&nbsp;21 Rating</small>
-                              </div><br>
-                              <h4 class="text-center"><a href="#">20% OFF</a></h4>
-                              <small>Six flags general admission ticket</small>
-                            </div><!-- end desc -->
-                        </div><!-- end media -->
-                    </div><!-- end box -->
-                </div><!-- end col -->
-
-                <div class="col-md-3 col-sm-4 col-xs-12">
-                    <div class="promobox">
-                        <div class="post-media">
-                            <a href="categories.html"><img src="/assets/gift-saves-example-4" alt="" class="img-responsive"></a>
-
-                            <div class="promo-desc">
-                              <div class="rating pull-left">
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star"></i>
-                                  <small>&nbsp;21 Rating</small>
-                              </div><br>
-                              <h4 class="text-center"><a href="#">20% OFF</a></h4>
-                              <small>Six flags general admission ticket</small>
-                            </div><!-- end desc -->
-                        </div><!-- end media -->
-                    </div><!-- end box -->
-                </div><!-- end col -->
+                <% end %>
             </div><!-- end row -->
 
             <hr class="invis1">

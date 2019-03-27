@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_26_161457) do
+ActiveRecord::Schema.define(version: 2019_03_27_190442) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,9 +29,38 @@ ActiveRecord::Schema.define(version: 2019_03_26_161457) do
     t.index ["addressable_id", "addressable_type"], name: "index_addresses_on_addressable_id_and_addressable_type"
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "friendly_id_slugs", id: :serial, force: :cascade do |t|
+    t.string "slug", null: false
+    t.integer "sluggable_id", null: false
+    t.string "sluggable_type", limit: 50
+    t.string "scope"
+    t.datetime "created_at"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+    t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
+    t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+  end
+
+  create_table "non_profit_categories", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "category_id"
+    t.bigint "non_profit_id"
+    t.index ["category_id"], name: "index_non_profit_categories_on_category_id"
+    t.index ["non_profit_id"], name: "index_non_profit_categories_on_non_profit_id"
+  end
+
   create_table "non_profits", force: :cascade do |t|
     t.string "name"
     t.string "url"
+    t.text "short_description"
+    t.text "full_description"
     t.string "badge_file_name"
     t.string "badge_content_type"
     t.integer "badge_file_size"
@@ -39,7 +68,14 @@ ActiveRecord::Schema.define(version: 2019_03_26_161457) do
     t.bigint "owner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "slug"
+    t.string "facebook"
+    t.string "twitter"
+    t.string "instagram"
+    t.string "google_plus"
+    t.string "contact_email"
     t.index ["owner_id"], name: "index_non_profits_on_owner_id"
+    t.index ["slug"], name: "index_non_profits_on_slug", unique: true
   end
 
   create_table "users", force: :cascade do |t|

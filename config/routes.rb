@@ -17,6 +17,16 @@ Rails.application.routes.draw do
     post "/", to: "users#create"
   end
 
+  scope "/non-profits" do
+    get "/", to: "non_profits#index"    
+    get "/search", to: "non_profits#search", as: :non_profit_search
+    get "/:slug", to: "non_profits#show", as: :non_profit
+  end
+
+  scope "/categories" do
+    get "/:name", to: "categories#search", as: :categories_by_name
+  end
+
   scope "/dashboards" do
     scope "/donors" do
       get "/", to: "donors_dashboards#index", as: :donors_dashboard
