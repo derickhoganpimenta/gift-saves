@@ -11,12 +11,9 @@
                 <div class="col-md-12">
                     
                     <%= form_for(:search, url: non_profit_search_path, html: { class: "well", method: "get" }) do |f| %>
-                      <div class="row">
-                          <div class="col-md-4 col-sm-4">
-                              <%= f.select :category, @categories.map { |key, value| [key.name, key.id] }, {include_blank: true}, {required: false, class: "form-control"} %>                              
-                          </div>
-                          <div class="col-md-4 col-sm-4">                              
-                              <%= f.text_field :name, class: "form-control", placeholder: "Non-profit name" %>
+                      <div class="row">                          
+                          <div class="col-md-8 col-sm-8">                              
+                              <%= f.text_field :query, class: "form-control", placeholder: "Type something. Ex. food, water" %>
                           </div>                          
                           <div class="col-md-4 col-sm-4">
                               <button type="submit" class="btn-primary btn-block"><i class="fa fa-search fa-2x" aria-hidden="true"></i></button>
